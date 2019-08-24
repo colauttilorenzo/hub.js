@@ -1,0 +1,137 @@
+/* STRUTTURA */
+*:focus {
+    outline: none !important;
+}
+
+a {
+    cursor: pointer;
+}
+
+input:focus,
+textarea:focus,
+select:focus,
+button:focus,
+a:focus {
+    outline: none !important;
+}
+
+/* CALLOUT */
+.bd-callout {
+    padding: 1.25rem;
+    margin-top: 1.25rem;
+    margin-bottom: 1.25rem;
+    border: 1px solid #eee;
+    border-left-width: .25rem;
+    border-radius: .25rem;
+}
+
+.bd-callout-primary {
+    border-color: #007bff;
+}
+
+.bd-callout-secondary {
+    border-color: #6c757d;
+}
+
+.bd-callout-info {
+    border-color: #17a2b8;
+}
+
+.bd-callout-success {
+    border-color: #28a745;
+}
+
+.bd-callout-warning,
+.bd-callout-warn {
+    border-color: #ffc107;
+}
+
+.bd-callout-danger {
+    border-color: #dc3545;
+}
+
+/* CORNER RIBBON */
+.corner-ribbon-wrapper {
+    position: absolute;
+    width: 120px;
+    height: 120px;
+    left: 0;
+    top: 0;
+    overflow: hidden;
+}
+
+.corner-ribbon {
+    width: 200px;
+    background: #007bff;
+    position: absolute;
+    top: 25px;
+    left: -55px;
+    text-align: center;
+    line-height: 28px;
+    font-size: 13px;
+    letter-spacing: 1px;
+    color: #f0f0f0;
+    text-decoration: none;
+    box-shadow: 0 0 3px rgba(0, 0, 0, .3);
+    transform: rotate(-45deg);
+    -webkit-transform: rotate(-45deg);
+    box-shadow: 0 0 4px rgba(0, 0, 0, .15), 0 4px 8px rgba(0, 0, 0, .30);
+}
+
+.corner-ribbon:hover {
+    color: #5bc0de;
+    text-decoration: none;
+}
+
+/* BACKGROUND FADE */
+.border-fade {
+    -webkit-transition: border .5s ease-in;
+            transition: border .5s ease-in;
+    -webkit-transition-delay: .5s;
+            transition-delay: .5s;
+}
+
+/* BOOTSTRAP-FIX */
+.nav .nav-link.active {
+    border-bottom: 4px solid #5bc0de;
+}
+
+.nav .nav-link.disabled {
+    cursor: default;
+}
+
+.navbar-primary .navbar-toggler {
+    color: #007bff;
+    border-color: #007bff;
+}
+
+.navbar .navbar-brand {
+    text-align: center;
+    font-size: 13px;
+    letter-spacing: 1px;
+    color: #f0f0f0;
+    text-decoration: none;
+}
+
+.navbar .navbar-brand:hover {
+    color: #5bc0de;
+    text-decoration: none;
+}
+
+.bg-jumbotron {
+    background-color: #e9ecef;
+}
+
+/* HELPERS */
+.shadow {
+    box-shadow: 0 0 4px rgba(0, 0, 0, .15), 0 4px 8px rgba(0, 0, 0, .30);
+}
+
+.px-custom {
+    padding-right: 32px;
+    padding-left: 32px;
+}
+
+.mt-custom {
+    margin-top: 60px;
+}
