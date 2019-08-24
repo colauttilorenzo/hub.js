@@ -1,0 +1,166 @@
+<nav class="navbar navbar-expand-lg navbar-primary bg-jumbotron" id="documentation-navbar">
+    <div class="container">
+        <a class="brand"></a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup"
+            aria-controls="navbarTogglerDemo01" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="fas fa-hamburger"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+            <ul class="navbar-nav">
+                <li class="nav-item">
+                    <a class="nav-link" href="#gettingstarted">Getting started</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#subscribe">Subscribe/unsubscribe</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#publish">Publish</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#channels">Channels</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#broadcast">Broadcast</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#broadcast">Clone</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#broadcast">Dispose</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</nav>
+
+<div class="container">
+    <div class="row" id="gettingstarted">
+        <div class="col-12 mt-custom">
+            <h4>Getting Started</h4>
+            First of all you have to include HUB.js into your progressive web application (CDN is not yet available):
+            <p class="bd-callout bd-callout-warn mt-0">
+                <code>&lt;script type="text/javascript" src="<span class="text-primary">[BASE_PATH]</span>/hub.js"&gt;&lt;/script&gt;</code>
+            </p>
+
+            Hub.js instantiates itself when it is included. You can use this library using the global
+            variable:
+            <code>window.message</code> (<code>window</code> can be ignored)
+        </div>
+    </div>
+    <div class="row" id="subscribe">
+        <div class="col-12 mt-custom">
+            <h4 id="">Subscribe/unsubscribe</h4>
+
+            Subscribe is used to register an handler to the specified message. When a message is published, HUB.js fires
+            all delegates registered.
+            <p class="bd-callout bd-callout-info mt-0">
+                <code>message.subscribe(<span class="text-primary">string:</span> message, <span class="text-primary">function:</span> delegate)</code>
+            </p>
+
+            Unsubscribe is used to remove a registered handler from the specified message.
+            <p class="bd-callout bd-callout-info mt-0">
+                <code>message.unsubscribe(<span class="text-primary">string:</span> message)</code>
+            </p>
+
+        </div>
+    </div>
+    <div class="row" id="publish">
+        <div class="col-12 mt-custom">
+            <h4 id="">Publish</h4>
+
+            Publish is used to notify a message. This handler fires all delegates registered to this message using the
+            specified parameter.
+            <br />Parameter is a JSON (<strong>J</strong>ava<strong>S</strong>cript <strong>O</strong>bject
+            <strong>N</strong>otation) ...in the future it will be possible to specified dynamic parameters, <span
+                class="text-success">stay tuned!</span>
+            <p class="bd-callout bd-callout-info mt-0">
+                <code>message.publish(<span class="text-primary">string:</span> message, <span class="text-primary">json:</span> parameter)</code>
+            </p>
+        </div>
+    </div>
+    <div class="row" id="channels">
+        <div class="col-12 mt-custom">
+            <h4 id="">Channels</h4>
+
+            It could be possibile that a module is added more times into the view so there is the need to diversify the
+            communication channel.
+
+            <br /><br />
+            Creating a new channel...
+            <p class="bd-callout bd-callout-info mt-0">
+                <code>message.channels.create(<span class="text-primary">string:</span> channelName)</code>
+            </p>
+
+            Getting a list of all channels created...
+            <p class="bd-callout bd-callout-info mt-0">
+                <code><span class="text-primary">var</span> _channelList = message.channels.get() :<span class="text-primary">list&lt;string&gt;</span></code>
+            </p>
+
+            <code>use(channelName)</code> handler allows access to a specified communication channel.
+            The returned object contained all methods to subscribe, unsubscribe and publish.
+            <p class="bd-callout bd-callout-info mt-0">
+                <code>message.use(<span class="text-primary">string:</span> channelName).subscribe(<span class="text-primary">string:</span> message, <span class="text-primary">function:</span> delegate)</code>
+            </p>
+            <p class="bd-callout bd-callout-info mt-0">
+                <code>message.use(<span class="text-primary">string:</span> channelName).publish(<span class="text-primary">string:</span> message, <span class="text-primary">json:</span> parameter)</code>
+            </p>
+            <p class="bd-callout bd-callout-info mt-0">
+                <code>message.use(<span class="text-primary">string:</span> channelName).unsubscribe(<span class="text-primary">string:</span> message)</code>
+            </p>
+
+            <strong class="text-warning"><span class="fas fa-exclamation-triangle"></span> When HUB.js starts, it creates a default channel (this channel is called <code>_</code>). The default channel cannot be disposed (but it could be cloned) and it is the core channel.</strong>
+        </div>
+    </div>
+    <div class="row" id="broadcast">
+        <div class="col-12 mt-custom">
+            <h4 id="">Broadcast</h4>
+
+            Broadcast <a href="#publish">publish <sup><span class="fas fa-external-link-alt"></span></sup></a> a
+            message in all channels (included the default
+            <a href="#channels">channel <sup><span class="fas fa-external-link-alt"></span></sup></a>)
+            <br />Parameter is a JSON (<strong>J</strong>ava<strong>S</strong>cript <strong>O</strong>bject
+            <strong>N</strong>otation) ...in the future it will be possible to specified dynamic parameters,
+            <span class="text-success">stay tuned!</span>
+            <p class="bd-callout bd-callout-info mt-0">
+                <code>message.publish(<span class="text-primary">string:</span> message, <span class="text-primary">json:</span> parameter)</code>
+            </p>
+        </div>
+    </div>
+    <div class="row" id="clone">
+        <div class="col-12 mt-custom">
+            <h4 id="">Clone</h4>
+
+            Clone allows to create a new channel (with different channel name) and copies all messages subscribed.
+            <p class="bd-callout bd-callout-info mt-0">
+                <code>message.use(<span class="text-primary">string:</span> channelName).clone(<span class="text-primary">string:</span> newChannelName)</code>
+            </p>
+        </div>
+    </div>
+    <div class="row" id="dispose">
+        <div class="col-12 mt-custom">
+            <h4 id="">Dispose</h4>
+
+            Dispose remove the used communication channel. This method does an unsubscribe of all messages and then delete the channel.
+            <p class="bd-callout bd-callout-info mt-0">
+                <code>message.use(<span class="text-primary">string:</span> channelName).dispose()</code>
+            </p>
+        </div>
+    </div>
+</div>
+
+<script type="text/javascript">
+    $(function () {
+
+        var stickySidebar = $('#documentation-navbar').offset().top;
+
+        $(window).scroll(function () {
+            if ($(window).scrollTop() > stickySidebar) {
+                $('#documentation-navbar').addClass('sticky-top');
+            }
+            else {
+                $('#documentation-navbar').removeClass('sticky-top');
+            }
+        });
+
+    });
+</script>
